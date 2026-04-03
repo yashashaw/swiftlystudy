@@ -1,5 +1,14 @@
 import { useState, useEffect } from "react";
-import { COLORS, universities } from "../constants";
+import { COLORS } from "../constants";
+
+const logos = [
+  "/Berkeley.png",
+  "/Stanford.png",
+  "/NYU.png",
+  "/USC.png",
+  "/UCLA.png",
+  "/UCSD.png",
+];
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
@@ -184,21 +193,23 @@ export default function Hero() {
       }}>
         <div style={{
           display: "flex",
-          gap: 48,
+          gap: 60,
           alignItems: "center",
           animation: "marquee 18s linear infinite",
           width: "max-content",
-          margin: "0 auto",
         }}>
-          {[...universities, ...universities, ...universities, ...universities].map((u, i) => (
-            <span key={i} style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: 15,
-              fontWeight: 600,
-              color: "rgba(255,255,255,0.4)",
-              letterSpacing: "-0.01em",
-              whiteSpace: "nowrap",
-            }}>{u}</span>
+          {[...logos, ...logos, ...logos, ...logos].map((src, i) => (
+            <img
+              key={i}
+              src={src}
+              alt="university logo"
+              style={{
+                height: 120,
+                width: "auto",
+                opacity: 1,
+                filter: "brightness(2) saturate(0.3)", 
+              }}
+            />
           ))}
         </div>
       </div>
