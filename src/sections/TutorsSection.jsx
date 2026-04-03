@@ -29,7 +29,7 @@ export default function TutorsSection() {
         <p
           style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 11,
+            fontSize: 16,
             letterSpacing: "0.25em",
             color: COLORS.gold,
             textTransform: "uppercase",

@@ -61,7 +61,7 @@ export default function Hero() {
       <p
         style={{
           fontFamily: "'DM Sans', sans-serif",
-          fontSize: 12,
+          fontSize: 16,
           letterSpacing: "0.25em",
           color: COLORS.gold,
           textTransform: "uppercase",

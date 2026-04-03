@@ -78,7 +78,7 @@ export default function ContactSection() {
         <p
           style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 11,
+            fontSize: 16,
             letterSpacing: "0.25em",
             color: COLORS.gold,
             textTransform: "uppercase",
@@ -110,7 +110,7 @@ export default function ContactSection() {
         <p
           style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 16,
+            fontSize: 19,
             color: "rgba(255,255,255,0.5)",
             textAlign: "center",
             marginBottom: 52,

@@ -14,9 +14,9 @@ export default function TestimonialsSection() {
         <p
           style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: 11,
+            fontSize: 16,
             letterSpacing: "0.25em",
-            color: COLORS.gold,
+            color: COLORS.crimson,
             textTransform: "uppercase",
             textAlign: "center",
             marginBottom: 12,
