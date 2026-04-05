@@ -81,24 +81,19 @@ export default function TutorsSection() {
                 backdropFilter: "blur(12px)",
               }}
             >
-              <div
+              <img
+                src={t.photo}
+                alt={t.name}
                 style={{
                   width: 72,
                   height: 72,
                   borderRadius: "50%",
-                  background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 28,
-                  fontWeight: 700,
-                  color: COLORS.navy,
+                  objectFit: "cover",
                   margin: "0 auto 20px",
+                  border: `2px solid ${COLORS.gold}`,
+                  display: "block",
                 }}
-              >
-                {t.avatar}
-              </div>
+              />
 
               <h3
                 style={{

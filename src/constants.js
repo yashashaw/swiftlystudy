@@ -52,22 +52,22 @@ export const services = [
 
 export const testimonials = [
   {
-    name: "Aisha K.",
-    score: "SAT: 1580",
-    text: "My tutor from Stanford broke down every problem type. I improved 200 points in 6 weeks.",
+    name: "Austin M.",
+    score: "Guitar Student",
+    text: "Yasha has been an exceptional guitar instructor, demonstrating patience, encouragement, and a strong ability to adapt his teaching to my skill level. Under his guidance I have made significant progress in my technical ability, speed, and overall knowledge as a guitarist.",
     avatar: "A",
   },
   {
-    name: "Marcus L.",
-    score: "CS @ UCLA",
-    text: "The programming sessions were incredible. I went from failing to acing my data structures course.",
-    avatar: "M",
-  },
+    name: "Eli R.",
+    score: "CS Student",
+    text: "Eli has made amazing progress in Python thanks to SwiftlyStudy. He quickly learned all of the fundamentals like for loops, while loops, conditionals, and basic problem solving, and he consistently shows curiosity and creativity when building his own programs.",
+    avatar: "E",
+  }, ,
   {
-    name: "Priya S.",
-    score: "Accepted: Stanford",
-    text: "The college consulting service helped me craft an essay that truly reflected who I am. Dream school!",
-    avatar: "P",
+    name: "Vedant M.",
+    score: "Physics Student",
+    text: "This program really helped me improve the way I approach physics and problem solving. Concepts that seemed confusing at first became much clearer, and I learned how to break down difficult problems step by step. The sessions were always helpful, and I feel much more confident in my physics and analytical thinking skills.",
+    avatar: "V",
   },
 ];
 
@@ -76,21 +76,21 @@ export const tutors = [
     name: "Yasha S.",
     school: "Stanford University",
     subjects: ["Math", "College Consulting", "Physics,", "Guitar", "Programming / CS"],
-    avatar: "Y",
+    photo: "/yasha.jpg",
     gpa: "4.1",
   },
   {
     name: "Helio H.",
     school: "NYU",
     subjects: ["SAT Prep", "Chemistry", "Math", "Physics"],
-    avatar: "H",
+    photo: "/helio.png",
     gpa: "4.0",
   },
   {
     name: "Jacob G.",
     school: "UCLA",
     subjects: ["Biology", "Math", "Chemistry", "SAT Prep"],
-    avatar: "J",
+    photo: "/jacob.png",
     gpa: "4.0",
   },
 ];
