@@ -8,7 +8,7 @@ export default function TestimonialsSection() {
     <section
       id="reviews"
       ref={ref}
-      style={{ background: COLORS.cream, padding: "100px 5vw" }}
+      style={{ background: COLORS.navy, padding: "100px 5vw" }}
     >
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <p
@@ -16,7 +16,7 @@ export default function TestimonialsSection() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 16,
             letterSpacing: "0.25em",
-            color: COLORS.crimson,
+            color: COLORS.gold,
             textTransform: "uppercase",
             textAlign: "center",
             marginBottom: 12,
@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
             fontFamily: "'Playfair Display', serif",
             fontSize: "clamp(32px, 4.5vw, 52px)",
             fontWeight: 800,
-            color: COLORS.navy,
+            color: COLORS.white,
             textAlign: "center",
             letterSpacing: "-0.03em",
             marginBottom: 64,
@@ -55,11 +55,12 @@ export default function TestimonialsSection() {
             <div
               key={t.name}
               style={{
-                background: COLORS.white,
+                background: "rgba(255,255,255,0.04)",
                 borderRadius: 20,
                 padding: "40px 32px",
-                border: "1px solid rgba(0,0,0,0.06)",
-                boxShadow: "0 2px 20px rgba(0,0,0,0.05)",
+                border: "1px solid rgba(201,151,58,0.15)",
+                boxShadow: "0 4px 24px rgba(0,0,0,0.2)",
+                backdropFilter: "blur(12px)",
                 opacity: inView ? 1 : 0,
                 transform: inView ? "none" : "translateY(30px)",
                 transition: `all 0.7s ease ${0.1 + i * 0.1}s`,
@@ -72,7 +73,7 @@ export default function TestimonialsSection() {
                   fontFamily: "Georgia, serif",
                   lineHeight: 1,
                   marginBottom: 20,
-                  opacity: 0.4,
+                  opacity: 0.6,
                 }}
               >
                 "
@@ -82,7 +83,7 @@ export default function TestimonialsSection() {
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 15,
-                  color: COLORS.slate,
+                  color: "rgba(255,255,255,0.7)",
                   lineHeight: 1.7,
                   marginBottom: 28,
                 }}
@@ -96,14 +97,14 @@ export default function TestimonialsSection() {
                     width: 44,
                     height: 44,
                     borderRadius: "50%",
-                    background: `linear-gradient(135deg, ${COLORS.navy}, #1A3060)`,
+                    background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontFamily: "'Playfair Display', serif",
                     fontSize: 18,
                     fontWeight: 700,
-                    color: COLORS.goldLight,
+                    color: COLORS.navy,
                   }}
                 >
                   {t.avatar}
@@ -114,7 +115,7 @@ export default function TestimonialsSection() {
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: 14,
                       fontWeight: 700,
-                      color: COLORS.navy,
+                      color: COLORS.white,
                     }}
                   >
                     {t.name}
