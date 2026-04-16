@@ -59,68 +59,81 @@ export default function TutorsSection() {
           Top Students, Real Results
         </h2>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 28,
-          }}
-        >
-          {tutors.map((t, i) => (
-            <div
-              key={t.name}
-              style={{
-                background: "rgba(255,255,255,0.04)",
-                borderRadius: 20,
-                border: "1px solid rgba(201,151,58,0.15)",
-                padding: "40px 32px",
-                textAlign: "center",
-                opacity: inView ? 1 : 0,
-                transform: inView ? "none" : "translateY(30px)",
-                transition: `all 0.7s ease ${0.15 + i * 0.1}s`,
-                backdropFilter: "blur(12px)",
-              }}
-            >
-              <img
-                src={t.photo}
-                alt={t.name}
-                style={{
-                  width: 200,
-                  height: 200,
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  margin: "0 auto 20px",
-                  border: `3px solid ${COLORS.gold}`,
-                  display: "block",
-                }}
-              />
+        {/*hides overflow and fades each tutor*/}
+        <div style={{
+          width: "100%",
+          overflow: "hidden",
+          maskImage: "linear-gradient(to right, transparent, black 2%, black 98%, transparent)",
+          WebkitMaskImage: "linear-gradient(to right, transparent, black 2%, black 98%, transparent)",
+          padding: "10px 0", // Added padding so the translateY animation doesn't get cut off
+        }}>
 
-              <h3
+          {/*marquee scrolling effect, same as with university logos*/}
+          <div style={{
+            display: "flex",
+            gap: 28,
+            alignItems: "stretch", // makes all cards equal height
+            animation: "marquee 40s linear infinite", // cards are wider than logos, so a longer duration looks smoother
+            width: "max-content",
+          }}>
+
+            {/* array for the infinite loop */}
+            {[...tutors, ...tutors, ...tutors, ...tutors].map((t, i) => (
+              <div
+                key={`${t.name}-${i}`} // appended index to key since names are no longer unique
                 style={{
+                  width: 320, // flex children will shrink by default. We must force a fixed width.
+                  flexShrink: 0, // prevents the browser from squishing the cards together
+
+                  background: "rgba(255,255,255,0.04)",
+                  borderRadius: 20,
+                  border: "1px solid rgba(201,151,58,0.15)",
+                  padding: "40px 32px",
+                  textAlign: "center",
+
+                  opacity: inView === 1,
+                  transform: inView ? "none" : "translateY(30px)",
+                  transition: `all 0.7s ease ${0.15 + (i % tutors.length) * 0.1}s`, // adjusted stagger to loop correctly
+                  backdropFilter: "blur(12px)",
+                }}
+              >
+                <img
+                  src={t.photo}
+                  alt={t.name}
+                  style={{
+                    width: 200,
+                    height: 200,
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    margin: "0 auto 20px",
+                    border: `3px solid ${COLORS.gold}`,
+                    display: "block",
+                  }}
+                />
+
+                <h3 style={{
                   fontFamily: "'Playfair Display', serif",
                   fontSize: 30,
                   fontWeight: 700,
                   color: COLORS.white,
                   marginBottom: 6,
-                }}
-              >
-                {t.name}
-              </h3>
+                }}>
+                  {t.name}
+                </h3>
 
-              <p
-                style={{
+                <p style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: 25,
                   color: COLORS.gold,
                   letterSpacing: "0.05em",
                   marginBottom: 20,
-                }}
-              >
-                {t.school}
-              </p>
-              
-            </div>
-          ))}
+                }}>
+                  {t.school}
+                </p>
+
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
