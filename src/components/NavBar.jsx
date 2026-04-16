@@ -31,7 +31,7 @@ export default function NavBar() {
             fontFamily: "'Playfair Display', Georgia, serif",
             fontWeight: 700, fontSize: 22, color: COLORS.white,
             letterSpacing: "-0.02em",
-          }}>SwiftlyStudy</span>
+          }}>Swiftly Study</span>
         </a>
 
         {/* Desktop nav links */}

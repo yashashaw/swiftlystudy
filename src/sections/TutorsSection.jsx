@@ -85,12 +85,12 @@ export default function TutorsSection() {
                 src={t.photo}
                 alt={t.name}
                 style={{
-                  width: 72,
-                  height: 72,
+                  width: 200,
+                  height: 200,
                   borderRadius: "50%",
                   objectFit: "cover",
                   margin: "0 auto 20px",
-                  border: `2px solid ${COLORS.gold}`,
+                  border: `3px solid ${COLORS.gold}`,
                   display: "block",
                 }}
               />
@@ -98,7 +98,7 @@ export default function TutorsSection() {
               <h3
                 style={{
                   fontFamily: "'Playfair Display', serif",
-                  fontSize: 22,
+                  fontSize: 30,
                   fontWeight: 700,
                   color: COLORS.white,
                   marginBottom: 6,
@@ -110,7 +110,7 @@ export default function TutorsSection() {
               <p
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 13,
+                  fontSize: 25,
                   color: COLORS.gold,
                   letterSpacing: "0.05em",
                   marginBottom: 20,
@@ -118,49 +118,7 @@ export default function TutorsSection() {
               >
                 {t.school}
               </p>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 8,
-                  justifyContent: "center",
-                  marginBottom: 24,
-                }}
-              >
-                {t.subjects.map((s) => (
-                  <span
-                    key={s}
-                    style={{
-                      background: "rgba(201,151,58,0.12)",
-                      border: "1px solid rgba(201,151,58,0.25)",
-                      color: COLORS.goldLight,
-                      padding: "5px 12px",
-                      borderRadius: 20,
-                      fontFamily: "'DM Sans', sans-serif",
-                      fontSize: 12,
-                      fontWeight: 500,
-                    }}
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-
-              <div
-                style={{
-                  borderTop: "1px solid rgba(255,255,255,0.08)",
-                  paddingTop: 20,
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: 13,
-                  color: "rgba(255,255,255,0.4)",
-                }}
-              >
-                GPA{" "}
-                <span style={{ color: COLORS.goldLight, fontWeight: 700 }}>
-                  {t.gpa}
-                </span>
-              </div>
+              
             </div>
           ))}
         </div>
