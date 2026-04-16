@@ -8,6 +8,7 @@ import ServicesSection from "./sections/ServicesSection";
 import TutorsSection from "./sections/TutorsSection";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import ContactSection from "./sections/ContactSection";
+import PricingSection from "./sections/PricingSection";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Hero />
       <ServicesSection />
       <TutorsSection />
+      <PricingSection />
       <TestimonialsSection />
       <ContactSection />
       <Footer />

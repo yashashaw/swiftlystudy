@@ -50,7 +50,7 @@ export const services = [
   },
 ];
 
-export const testimonials = [
+export const reviews = [
   {
     name: "Austin M.",
     score: "Guitar Student",

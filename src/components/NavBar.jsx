@@ -36,7 +36,7 @@ export default function NavBar() {
 
         {/* Desktop nav links */}
         <div style={{ display: "flex", gap: 32, alignItems: "center" }} className="desktop-nav">
-          {["Services", "Tutors", "Testimonials", "Contact"].map(item => (
+          {["Services", "Tutors", "Pricing", "Reviews", "Contact"].map(item => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{
               color: "rgba(255,255,255,0.75)", textDecoration: "none",
               fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500,
@@ -87,7 +87,7 @@ export default function NavBar() {
           borderBottom: `1px solid rgba(201,151,58,0.2)`,
           padding: "20px 5vw", display: "flex", flexDirection: "column", gap: 20,
         }}>
-          {["Services", "Tutors", "Testimonials", "Contact"].map(item => (
+          {["Services", "Tutors", "Pricing", "Reviews", "Contact"].map(item => (
             <a key={item} href={`#${item.toLowerCase()}`}
               onClick={() => setMenuOpen(false)}
               style={{

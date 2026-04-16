@@ -1,4 +1,4 @@
-import { COLORS, testimonials } from "../constants";
+import { COLORS, reviews } from "../constants";
 import { useInView } from "../hooks/useInView";
 
 export default function TestimonialsSection() {
@@ -6,7 +6,7 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      id="testimonials"
+      id="reviews"
       ref={ref}
       style={{ background: COLORS.cream, padding: "100px 5vw" }}
     >
@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
             gap: 24,
           }}
         >
-          {testimonials.map((t, i) => (
+          {reviews.map((t, i) => (
             <div
               key={t.name}
               style={{
