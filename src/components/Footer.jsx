@@ -31,7 +31,7 @@ export default function Footer() {
               color: COLORS.white,
             }}
           >
-            SwiftlyStudy
+            Swiftly Study
           </span>
         </div>
 
