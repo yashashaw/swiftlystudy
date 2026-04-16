@@ -74,9 +74,16 @@ export const testimonials = [
 export const tutors = [
   {
     name: "Yasha S.",
-    school: "Stanford University",
+    school: "Stanford",
     subjects: ["Math", "College Consulting", "Physics,", "Guitar", "Programming / CS"],
     photo: "/yasha.jpg",
+    gpa: "4.1",
+  },
+  {
+    name: "Yanai H.",
+    school: "Berkeley",
+    subjects: ["Math", "College Consulting", "Physics,", "Guitar", "Programming / CS"],
+    photo: "/yanai.jpg",
     gpa: "4.1",
   },
   {
@@ -92,5 +99,12 @@ export const tutors = [
     subjects: ["Biology", "Math", "Chemistry", "SAT Prep"],
     photo: "/jacob.png",
     gpa: "4.0",
+  },
+  {
+    name: "Jack T.",
+    school: "UCSD",
+    subjects: ["Math", "College Consulting", "Physics,", "Guitar", "Programming / CS"],
+    photo: "/jack.png",
+    gpa: "4.1",
   },
 ];
