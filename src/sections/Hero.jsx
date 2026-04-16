@@ -195,7 +195,7 @@ export default function Hero() {
           display: "flex",
           gap: 60,
           alignItems: "center",
-          animation: "marquee 18s linear infinite",
+          animation: "marquee 23s linear infinite",
           width: "max-content",
         }}>
           {[...logos, ...logos, ...logos, ...logos].map((src, i) => (

@@ -69,6 +69,12 @@ export const reviews = [
     text: "This program really helped me improve the way I approach physics and problem solving. Concepts that seemed confusing at first became much clearer, and I learned how to break down difficult problems step by step. The sessions were always helpful, and I feel much more confident in my physics and analytical thinking skills.",
     avatar: "V",
   },
+  {
+    name: "Isa S.",
+    score: "Algebra Student",
+    text: "Participating in this program changed how I approach algebra for the better. Topics that used to stress me out finally started to finally make sense. The tutoring from Yasha and Jacob was awesome and left me with a much better understanding of math.",
+    avatar: "I",
+  },
 ];
 
 export const tutors = [

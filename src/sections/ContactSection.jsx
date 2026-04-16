@@ -33,20 +33,22 @@ export default function ContactSection() {
 
   const inputStyle = {
     width: "100%",
-    background: "rgba(255,255,255,0.06)",
-    border: "1px solid rgba(255,255,255,0.12)",
+    background: "rgba(0,0,0,0.02)",
+    border: "1px solid rgba(0,0,0,0.1)",
     borderRadius: 10,
     padding: "13px 16px",
-    color: COLORS.white,
+    color: COLORS.navy,
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 14,
     outline: "none",
+    transition: "border 0.2s ease",
   };
 
   const labelStyle = {
     fontFamily: "'DM Sans', sans-serif",
     fontSize: 12,
-    color: COLORS.gold,
+    color: COLORS.navy,
+    fontWeight: 700,
     letterSpacing: "0.1em",
     textTransform: "uppercase",
     display: "block",
@@ -58,7 +60,7 @@ export default function ContactSection() {
       id="contact"
       ref={ref}
       style={{
-        background: COLORS.navy,
+        background: COLORS.cream,
         padding: "100px 5vw",
         position: "relative",
         overflow: "hidden",
@@ -69,7 +71,7 @@ export default function ContactSection() {
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "radial-gradient(circle at 20% 80%, rgba(140,21,21,0.08) 0%, transparent 50%)",
+            "radial-gradient(circle at 20% 80%, rgba(140,21,21,0.04) 0%, transparent 50%)",
           pointerEvents: "none",
         }}
       />
@@ -80,7 +82,7 @@ export default function ContactSection() {
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 16,
             letterSpacing: "0.25em",
-            color: COLORS.gold,
+            color: COLORS.crimson,
             textTransform: "uppercase",
             textAlign: "center",
             marginBottom: 12,
@@ -96,7 +98,7 @@ export default function ContactSection() {
             fontFamily: "'Playfair Display', serif",
             fontSize: "clamp(32px, 4.5vw, 52px)",
             fontWeight: 800,
-            color: COLORS.white,
+            color: COLORS.navy,
             textAlign: "center",
             letterSpacing: "-0.03em",
             marginBottom: 16,
@@ -111,7 +113,7 @@ export default function ContactSection() {
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: 19,
-            color: "rgba(255,255,255,0.5)",
+            color: COLORS.slate,
             textAlign: "center",
             marginBottom: 52,
             lineHeight: 1.6,
@@ -139,9 +141,10 @@ export default function ContactSection() {
             <div
               key={c.label}
               style={{
-                background: "rgba(255,255,255,0.05)",
+                background: COLORS.cream,
                 borderRadius: 12,
-                border: "1px solid rgba(201,151,58,0.15)",
+                border: "1px solid rgba(0,0,0,0.06)",
+                boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
                 padding: "20px 32px",
                 display: "flex",
                 alignItems: "center",
@@ -167,7 +170,7 @@ export default function ContactSection() {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: 15,
                     fontWeight: 600,
-                    color: COLORS.white,
+                    color: COLORS.navy,
                   }}
                 >
                   {c.value}
@@ -181,8 +184,9 @@ export default function ContactSection() {
         {sent ? (
           <div
             style={{
-              background: "rgba(201,151,58,0.1)",
+              background: COLORS.cream,
               border: "1px solid rgba(201,151,58,0.3)",
+              boxShadow: "0 4px 30px rgba(0,0,0,0.04)",
               borderRadius: 16,
               padding: "48px 32px",
               textAlign: "center",
@@ -193,7 +197,7 @@ export default function ContactSection() {
               style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: 28,
-                color: COLORS.white,
+                color: COLORS.navy,
                 marginBottom: 12,
               }}
             >
@@ -202,7 +206,7 @@ export default function ContactSection() {
             <p
               style={{
                 fontFamily: "'DM Sans', sans-serif",
-                color: "rgba(255,255,255,0.6)",
+                color: COLORS.slate,
                 fontSize: 15,
               }}
             >
@@ -214,9 +218,10 @@ export default function ContactSection() {
           /* Contact form */
           <div
             style={{
-              background: "rgba(255,255,255,0.04)",
+              background: COLORS.cream,
               borderRadius: 20,
-              border: "1px solid rgba(255,255,255,0.08)",
+              border: "1px solid rgba(0,0,0,0.06)",
+              boxShadow: "0 4px 30px rgba(0,0,0,0.04)",
               padding: "48px",
               opacity: inView ? 1 : 0,
               transform: inView ? "none" : "translateY(20px)",
@@ -254,18 +259,18 @@ export default function ContactSection() {
                 onChange={(e) => setForm({ ...form, subject: e.target.value })}
                 style={{
                   ...inputStyle,
-                  color: form.subject ? COLORS.white : "rgba(255,255,255,0.4)",
+                  color: form.subject ? COLORS.navy : "rgba(0,0,0,0.4)",
                 }}
               >
-                <option value="" style={{ background: COLORS.navy }}>
+                <option value="" style={{ background: COLORS.cream }}>
                   Select a service...
                 </option>
                 {services.map((s) => (
-                  <option key={s.title} value={s.title} style={{ background: COLORS.navy }}>
+                  <option key={s.title} value={s.title} style={{ background: COLORS.cream }}>
                     {s.title}
                   </option>
                 ))}
-                <option value="Other" style={{ background: COLORS.navy }}>
+                <option value="Other" style={{ background: COLORS.cream }}>
                   Other
                 </option>
               </select>
