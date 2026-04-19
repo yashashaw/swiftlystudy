@@ -1,26 +1,32 @@
+import { useState } from "react";
 import "./styles/global.css";
 
-import NavBar from "./components/NavBar"
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 
-import Hero from "./sections/Hero";
-import ServicesSection from "./sections/ServicesSection";
-import TutorsSection from "./sections/TutorsSection";
-import TestimonialsSection from "./sections/TestimonialsSection";
-import ContactSection from "./sections/ContactSection";
-import PricingSection from "./sections/PricingSection";
+// Pages
+import HomePage from "./pages/HomePage";
+import TutoringPage from "./pages/TutoringPage";
+import ConsultingPage from "./pages/ConsultingPage";
+import SqueezePage from "./pages/SqueezePage";
+import DeliveryPage from "./pages/DeliveryPage";
 
 export default function App() {
+  const [page, setPage] = useState("home");
+
+  const noNav = page === "squeeze" || page === "delivery";
+
   return (
     <div>
-      <NavBar />
-      <Hero />
-      <ServicesSection />
-      <TutorsSection />
-      <PricingSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer />
+      {!noNav && <NavBar onNavigate={setPage} currentPage={page} />}
+
+      {page === "home"      && <HomePage      onNavigate={setPage} />}
+      {page === "tutoring"  && <TutoringPage  onNavigate={setPage} />}
+      {page === "consulting"&& <ConsultingPage onNavigate={setPage} />}
+      {page === "squeeze"   && <SqueezePage   onNavigate={setPage} />}
+      {page === "delivery"  && <DeliveryPage  onNavigate={setPage} />}
+
+      {!noNav && <Footer />}
     </div>
   );
 }
