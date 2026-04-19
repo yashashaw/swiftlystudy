@@ -58,7 +58,7 @@ export default function ConsultingPage({ onNavigate }) {
           background: "rgba(167,139,250,0.15)",
           color: "#C4B5FD",
           border: "1px solid rgba(167,139,250,0.35)",
-          fontSize: 25, fontWeight: 700, letterSpacing: "0.12em",
+          fontSize: 15, fontWeight: 700, letterSpacing: "0.12em",
           textTransform: "uppercase", padding: "5px 16px", borderRadius: 20,
           fontFamily: "'DM Sans', sans-serif", marginBottom: 24,
           opacity: visible ? 1 : 0, transition: "opacity 0.8s ease 0.3s",
