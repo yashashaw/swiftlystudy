@@ -58,7 +58,7 @@ export default function ConsultingPage({ onNavigate }) {
           background: "rgba(167,139,250,0.15)",
           color: "#C4B5FD",
           border: "1px solid rgba(167,139,250,0.35)",
-          fontSize: 11, fontWeight: 700, letterSpacing: "0.12em",
+          fontSize: 25, fontWeight: 700, letterSpacing: "0.12em",
           textTransform: "uppercase", padding: "5px 16px", borderRadius: 20,
           fontFamily: "'DM Sans', sans-serif", marginBottom: 24,
           opacity: visible ? 1 : 0, transition: "opacity 0.8s ease 0.3s",
@@ -170,7 +170,7 @@ export default function ConsultingPage({ onNavigate }) {
               onMouseOver={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(201,151,58,0.5)"; }}
               onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(201,151,58,0.35)"; }}
             >
-              Get Your Free Blueprint Session →
+              Get Your FREE Blueprint Session →
             </button>
           </div>
         </div>

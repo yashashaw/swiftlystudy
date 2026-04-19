@@ -36,13 +36,22 @@ export default function SqueezePage({ onNavigate }) {
       alignItems: "center", justifyContent: "center",
       padding: "60px 5vw",
     }}>
-      {/* Mini logo */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 48 }}>
+      {/* Clickable Mini logo */}
+      <div 
+        onClick={() => onNavigate('home')}
+        style={{ 
+          display: "flex", 
+          alignItems: "center", 
+          gap: 10, 
+          marginBottom: 48,
+          cursor: "pointer" 
+        }}
+      >
         <GradCap />
         <span style={{
           fontFamily: "'Playfair Display', serif", fontSize: 18,
           fontWeight: 700, color: COLORS.white,
-        }}>Swiftly Study</span>
+        }}>Swiftly Consulting</span>
       </div>
 
       <div style={{ maxWidth: 460, width: "100%" }}>
