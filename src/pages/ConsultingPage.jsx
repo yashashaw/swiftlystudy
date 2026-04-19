@@ -1,17 +1,29 @@
 import { useState, useEffect } from "react";
-import { COLORS } from "../constants";
+import { COLORS, consultingTutors } from "../constants";
 import { useInView } from "../hooks/useInView";
 
-
 const whyUs = [
-  { icon: "🏛️", title: "Stanford-Founded", desc: "Built by students who got in and know exactly how the game is played." },
-  { icon: "📊", title: "Data-Driven", desc: "We track acceptance patterns across cycles to find where your profile wins." },
-  { icon: "🎯", title: "Profile-First", desc: "We build who you are before we write a single word of your essays." },
+  {
+    icon: "🏛️",
+    title: "Recent Ivy+ Insiders",
+    desc: "Traditional counselors haven't applied to college in decades. We just beat the most competitive cycles in history and know exactly what works today."
+  },
+  {
+    icon: "📂",
+    title: "We Read Our Admissions Files",
+    desc: "We don't guess what Top 20 schools want. We read the actual officer notes on our own Stanford applications to reverse-engineer the acceptance formula."
+  },
+  {
+    icon: "🎯",
+    title: "The Anti-'Well-Rounded'",
+    desc: "Outdated advisors tell you to pad your resume and join more clubs. We cut the fluff and engineer a highly specialized 'Spike' that demands attention."
+  },
 ];
 
 export default function ConsultingPage({ onNavigate }) {
   const [visible, setVisible] = useState(false);
   const [whyRef, whyInView] = useInView();
+  const [tutorsRef, tutorsInView] = useInView();
 
   useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
 
@@ -76,7 +88,7 @@ export default function ConsultingPage({ onNavigate }) {
           transform: visible ? "translateY(0)" : "translateY(20px)",
           transition: "all 0.9s ease 0.6s",
         }}>
-          We don't just edit essays. Our team of Stanford and Ivy+ strategists build highly authentic, deeply specialized applicant profiles.
+          We don't just edit essays. Our team of ONLY Stanford and Ivy+ strategists build highly authentic, deeply specialized applicant profiles.
         </p>
 
         <button
@@ -104,7 +116,7 @@ export default function ConsultingPage({ onNavigate }) {
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 13,
+            fontFamily: "'DM Sans', sans-serif", fontSize: 20,
             letterSpacing: "0.25em", color: COLORS.gold,
             textTransform: "uppercase", textAlign: "center", marginBottom: 12,
             opacity: whyInView ? 1 : 0, transition: "opacity 0.7s",
@@ -131,13 +143,13 @@ export default function ConsultingPage({ onNavigate }) {
                 transform: whyInView ? "none" : "translateY(20px)",
                 transition: `all 0.7s ease ${0.1 + i * 0.1}s`,
               }}>
-                <div style={{ fontSize: 32, marginBottom: 14 }}>{w.icon}</div>
+                <div style={{ fontSize: 50, marginBottom: 14 }}>{w.icon}</div>
                 <h3 style={{
-                  fontFamily: "'Playfair Display', serif", fontSize: 19,
+                  fontFamily: "'Playfair Display', serif", fontSize: 25,
                   fontWeight: 700, color: COLORS.goldLight, marginBottom: 10,
                 }}>{w.title}</h3>
                 <p style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 14,
+                  fontFamily: "'DM Sans', sans-serif", fontSize: 18,
                   color: "rgba(255,255,255,0.6)", lineHeight: 1.65,
                 }}>{w.desc}</p>
               </div>
@@ -163,6 +175,115 @@ export default function ConsultingPage({ onNavigate }) {
           </div>
         </div>
       </section>
+
+      {/* Consulting Tutors */}
+      <section ref={tutorsRef} style={{ background: COLORS.navy, padding: "100px 5vw" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: 13,
+            letterSpacing: "0.25em", color: COLORS.gold,
+            textTransform: "uppercase", textAlign: "center", marginBottom: 12,
+            opacity: tutorsInView ? 1 : 0, transition: "opacity 0.7s",
+          }}>The Team</p>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
+            color: COLORS.white, textAlign: "center",
+            letterSpacing: "-0.03em", marginBottom: 16,
+            opacity: tutorsInView ? 1 : 0,
+            transform: tutorsInView ? "none" : "translateY(20px)",
+            transition: "all 0.8s ease 0.1s",
+          }}>Your Strategists</h2>
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: 18,
+            color: "rgba(255,255,255,0.5)", textAlign: "center",
+            maxWidth: 520, margin: "0 auto 64px", lineHeight: 1.65,
+            opacity: tutorsInView ? 1 : 0, transition: "opacity 0.8s ease 0.15s",
+          }}>
+            Every consulting client is matched exclusively with an Ivy+ or Stanford student. No exceptions.
+          </p>
+
+          <div style={{
+            display: "flex", flexDirection: "column", gap: 40,
+          }}>
+            {consultingTutors.map((t, i) => (
+              <div
+                key={t.name}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  gap: 24,
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(201,151,58,0.12)",
+                  borderRadius: 20,
+                  padding: "44px 48px",
+                  opacity: tutorsInView ? 1 : 0,
+                  transform: tutorsInView ? "none" : "translateY(30px)",
+                  transition: `all 0.7s ease ${0.1 + i * 0.12}s`,
+                }}
+                className="tutor-card-consulting"
+              >
+                {/* 1st part: Photo + identity */}
+                <div style={{ textAlign: "center" }}>
+                  {t.photo ? (
+                    <img
+                      src={t.photo}
+                      alt={t.name}
+                      style={{
+                        width: 300, height: 300, borderRadius: "50%",
+                        objectFit: "cover", display: "block",
+                        margin: "0 auto 16px",
+                        border: `3px solid ${COLORS.gold}`,
+                      }}
+                    />
+                  ) : (
+                    <div style={{
+                      width: 300, height: 300, borderRadius: "50%",
+                      background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      margin: "0 auto 16px",
+                      fontFamily: "'Playfair Display', serif",
+                      fontSize: 52, fontWeight: 800, color: COLORS.navy,
+                    }}>
+                      {t.name.charAt(0)}
+                    </div>
+                  )}
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', serif", fontSize: 50,
+                    fontWeight: 700, color: COLORS.white, marginBottom: 4,
+                  }}>{t.name}</h3>
+
+                  {/* Render School Name as Text */}
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif", fontSize: 30,
+                    color: COLORS.gold, fontWeight: 600, letterSpacing: "0.05em",
+                    marginBottom: 12,
+                  }}>{t.school}</p>
+                </div>
+
+                {/* 2nd part: Bio paragraph */}
+                <div>
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif", fontSize: 18,
+                    color: "rgba(255,255,255,0.7)", lineHeight: 1.8,
+                  }}>{t.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @media (max-width: 700px) {
+          .tutor-card-consulting {
+            gap: 20px !important;
+            padding: 36px 28px !important;
+          }
+        }
+      `}</style>
     </>
   );
 }
