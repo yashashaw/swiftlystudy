@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 import { COLORS } from "../constants";
+import { useNavigate } from "react-router-dom";
 
-export default function HomePage({ onNavigate }) {
+export default function HomePage() {
   const [visible, setVisible] = useState(false);
-  useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
+  const navigate = useNavigate();
 
-  const go = (page) => { onNavigate(page); window.scrollTo(0, 0); };
+  useEffect(() => { 
+    setTimeout(() => setVisible(true), 100); 
+  }, []);
+
+  // Updated to use React Router navigation
+  const go = (path) => { 
+    navigate(path); 
+    window.scrollTo(0, 0); 
+  };
 
   return (
     <>
@@ -79,7 +88,7 @@ export default function HomePage({ onNavigate }) {
           gap: 24, maxWidth: 860, width: "100%",
           opacity: visible ? 1 : 0, transition: "opacity 0.9s ease 0.9s",
         }}>
-          {/* Tutoring card */}
+          {/* Tutoring card - links to /tutoring */}
           <SplitCard
             emoji="📚"
             badge="Academic Tutoring"
@@ -88,9 +97,9 @@ export default function HomePage({ onNavigate }) {
             title="I need academic help for my child."
             desc="One-on-one sessions with top students from Stanford, Berkeley, NYU & more. Real expertise for every subject."
             btnLabel="Explore Tutoring →"
-            onClick={() => go("tutoring")}
+            onClick={() => go("/tutoring")}
           />
-          {/* Consulting card */}
+          {/* Consulting card - links to /consulting */}
           <SplitCard
             emoji="🎓"
             badge="College Consulting"
@@ -101,7 +110,7 @@ export default function HomePage({ onNavigate }) {
             btnLabel="Explore Consulting →"
             btnAccent="#A78BFA"
             btnAccentDark="#6D28D9"
-            onClick={() => go("consulting")}
+            onClick={() => go("/consulting")}
           />
         </div>
       </section>

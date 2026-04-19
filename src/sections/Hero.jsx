@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { COLORS } from "../constants";
+import { useNavigate } from "react-router-dom"; // Added for routing
 
 const logos = [
   "/Berkeley.png",
@@ -12,6 +13,7 @@ const logos = [
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 100);
@@ -136,6 +138,7 @@ export default function Hero() {
           transition: "opacity 0.9s ease 0.9s",
         }}
       >
+        {/* Internal page scroll */}
         <a
           href="#contact"
           style={{
@@ -152,16 +155,18 @@ export default function Hero() {
             transition: "transform 0.2s, box-shadow 0.2s",
           }}
           onMouseOver={(e) => {
-            e.target.style.transform = "translateY(-2px)";
-            e.target.style.boxShadow = "0 8px 32px rgba(201,151,58,0.5)";
+            e.currentTarget.style.transform = "translateY(-2px)";
+            e.currentTarget.style.boxShadow = "0 8px 32px rgba(201,151,58,0.5)";
           }}
           onMouseOut={(e) => {
-            e.target.style.transform = "translateY(0)";
-            e.target.style.boxShadow = "0 4px 24px rgba(201,151,58,0.4)";
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "0 4px 24px rgba(201,151,58,0.4)";
           }}
         >
           Book a Session
         </a>
+
+        {/* Internal page scroll */}
         <a
           href="#services"
           style={{

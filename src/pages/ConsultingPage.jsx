@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { COLORS, consultingTutors } from "../constants";
 import { useInView } from "../hooks/useInView";
 
@@ -20,14 +21,19 @@ const whyUs = [
   },
 ];
 
-export default function ConsultingPage({ onNavigate }) {
+export default function ConsultingPage() {
   const [visible, setVisible] = useState(false);
   const [whyRef, whyInView] = useInView();
   const [tutorsRef, tutorsInView] = useInView();
+  
+  const navigate = useNavigate();
 
   useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
 
-  const go = (page) => { onNavigate(page); window.scrollTo(0, 0); };
+  const go = (path) => { 
+    navigate(path); 
+    window.scrollTo(0, 0); 
+  };
 
   return (
     <>
@@ -40,7 +46,6 @@ export default function ConsultingPage({ onNavigate }) {
         padding: "120px 5vw 80px", textAlign: "center",
         position: "relative", overflow: "hidden",
       }}>
-        {/* Decorative rings */}
         {[
           { size: 600, top: "-200px", right: "-150px", opacity: 0.04 },
           { size: 250, bottom: "80px", left: "-60px", opacity: 0.05 },
@@ -92,7 +97,7 @@ export default function ConsultingPage({ onNavigate }) {
         </p>
 
         <button
-          onClick={() => go("squeeze")}
+          onClick={() => go("/blueprint")}
           style={{
             background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
             color: COLORS.navy, padding: "16px 40px", borderRadius: 8,
@@ -108,7 +113,7 @@ export default function ConsultingPage({ onNavigate }) {
         </button>
       </section>
 
-      {/* Why Us */}
+      {/* Why Us Section */}
       <section ref={whyRef} style={{
         background: "rgba(255,255,255,0.02)",
         borderTop: "1px solid rgba(201,151,58,0.1)",
@@ -155,28 +160,10 @@ export default function ConsultingPage({ onNavigate }) {
               </div>
             ))}
           </div>
-
-          <div style={{ textAlign: "center" }}>
-            <button
-              onClick={() => go("squeeze")}
-              style={{
-                background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
-                color: COLORS.navy, padding: "15px 40px", borderRadius: 8,
-                fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15,
-                border: "none", cursor: "pointer", letterSpacing: "0.04em",
-                boxShadow: "0 4px 24px rgba(201,151,58,0.35)",
-                transition: "transform 0.2s, box-shadow 0.2s",
-              }}
-              onMouseOver={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(201,151,58,0.5)"; }}
-              onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(201,151,58,0.35)"; }}
-            >
-              Get Your FREE Blueprint Session →
-            </button>
-          </div>
         </div>
       </section>
 
-      {/* Consulting Tutors */}
+      {/* Consulting Strategists - RESTORED */}
       <section ref={tutorsRef} style={{ background: COLORS.navy, padding: "100px 5vw" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <p style={{
@@ -203,71 +190,53 @@ export default function ConsultingPage({ onNavigate }) {
             Every consulting client is matched exclusively with an Ivy+ or Stanford student. No exceptions.
           </p>
 
-          <div style={{
-            display: "flex", flexDirection: "column", gap: 40,
-          }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
             {consultingTutors.map((t, i) => (
               <div
                 key={t.name}
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  textAlign: "center",
-                  gap: 24,
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(201,151,58,0.12)",
-                  borderRadius: 20,
-                  padding: "44px 48px",
-                  opacity: tutorsInView ? 1 : 0,
+                  display: "flex", flexDirection: "column", alignItems: "center",
+                  textAlign: "center", gap: 24, background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(201,151,58,0.12)", borderRadius: 20,
+                  padding: "44px 48px", opacity: tutorsInView ? 1 : 0,
                   transform: tutorsInView ? "none" : "translateY(30px)",
                   transition: `all 0.7s ease ${0.1 + i * 0.12}s`,
                 }}
                 className="tutor-card-consulting"
               >
-                {/* 1st part: Photo + identity */}
                 <div style={{ textAlign: "center" }}>
                   {t.photo ? (
-                    <img
-                      src={t.photo}
-                      alt={t.name}
-                      style={{
-                        width: 300, height: 300, borderRadius: "50%",
-                        objectFit: "cover", display: "block",
-                        margin: "0 auto 16px",
-                        border: `3px solid ${COLORS.gold}`,
-                      }}
-                    />
+                    <img src={t.photo} alt={t.name} style={{
+                      width: 260, height: 260, borderRadius: "50%",
+                      objectFit: "cover", display: "block", margin: "0 auto 16px",
+                      border: `3px solid ${COLORS.gold}`,
+                    }} />
                   ) : (
                     <div style={{
-                      width: 300, height: 300, borderRadius: "50%",
+                      width: 260, height: 260, borderRadius: "50%",
                       background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      margin: "0 auto 16px",
-                      fontFamily: "'Playfair Display', serif",
+                      margin: "0 auto 16px", fontFamily: "'Playfair Display', serif",
                       fontSize: 52, fontWeight: 800, color: COLORS.navy,
                     }}>
                       {t.name.charAt(0)}
                     </div>
                   )}
                   <h3 style={{
-                    fontFamily: "'Playfair Display', serif", fontSize: 50,
+                    fontFamily: "'Playfair Display', serif", fontSize: 38,
                     fontWeight: 700, color: COLORS.white, marginBottom: 4,
                   }}>{t.name}</h3>
-
-                  {/* Render School Name as Text */}
                   <p style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 30,
+                    fontFamily: "'DM Sans', sans-serif", fontSize: 20,
                     color: COLORS.gold, fontWeight: 600, letterSpacing: "0.05em",
                     marginBottom: 12,
                   }}>{t.school}</p>
                 </div>
 
-                {/* 2nd part: Bio paragraph */}
                 <div>
                   <p style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 18,
-                    color: "rgba(255,255,255,0.7)", lineHeight: 1.8,
+                    fontFamily: "'DM Sans', sans-serif", fontSize: 17,
+                    color: "rgba(255,255,255,0.7)", lineHeight: 1.8, maxWidth: 800,
                   }}>{t.bio}</p>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./styles/global.css";
 
 import NavBar from "./components/NavBar";
@@ -12,21 +12,29 @@ import SqueezePage from "./pages/SqueezePage";
 import DeliveryPage from "./pages/DeliveryPage";
 
 export default function App() {
-  const [page, setPage] = useState("home");
-
-  const noNav = page === "squeeze" || page === "delivery";
-
   return (
-    <div>
-      {!noNav && <NavBar onNavigate={setPage} currentPage={page} />}
+    <Router>
+      <Routes>
+        {/* Pages WITH Navbar/Footer */}
+        <Route path="/" element={<LayoutWithNav><HomePage /></LayoutWithNav>} />
+        <Route path="/tutoring" element={<LayoutWithNav><TutoringPage /></LayoutWithNav>} />
+        <Route path="/consulting" element={<LayoutWithNav><ConsultingPage /></LayoutWithNav>} />
 
-      {page === "home"      && <HomePage      onNavigate={setPage} />}
-      {page === "tutoring"  && <TutoringPage  onNavigate={setPage} />}
-      {page === "consulting"&& <ConsultingPage onNavigate={setPage} />}
-      {page === "squeeze"   && <SqueezePage   onNavigate={setPage} />}
-      {page === "delivery"  && <DeliveryPage  onNavigate={setPage} />}
+        {/* Clean Pages WITHOUT Navbar/Footer */}
+        <Route path="/blueprint" element={<SqueezePage />} />
+        <Route path="/delivery" element={<DeliveryPage />} />
+      </Routes>
+    </Router>
+  );
+}
 
-      {!noNav && <Footer />}
-    </div>
+// Simple wrapper to keep Nav/Footer on main pages but hide them on Squeeze/Delivery
+function LayoutWithNav({ children }) {
+  return (
+    <>
+      <NavBar />
+      {children}
+      <Footer />
+    </>
   );
 }

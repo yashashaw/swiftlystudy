@@ -12,11 +12,11 @@ export const COLORS = {
 export const universities = ["Stanford University", "NYU", "UCLA", "UC Berkeley", "USC", "UCSD"];
 
 export const services = [
-  { icon: "📝", title: "SAT Prep", desc: "Targeted strategies and practice for top scores", color: "#C9973A" },
   { icon: "∫", title: "Mathematics", desc: "From algebra to multivariable calculus", color: "#8C1515" },
-  { icon: "⚛️", title: "Physics & Sciences", desc: "Biology, Chemistry, Physics & more", color: "#2D6A4F" },
+  { icon: "⚛️", title: "Physics & Sciences", desc: "Biology, Chemistry, Physics & more", color: "#6B46C1" },
   { icon: "</>", title: "Programming / CS", desc: "Python, Java, algorithms & data structures", color: "#1A56DB" },
-  { icon: "🎓", title: "College Consulting", desc: "Essays, applications & strategy", color: "#6B46C1" },
+  { icon: "📚", title: "English", desc: "Essays, grammar, and reading,", color: "#2D6A4F" },
+  { icon: "📝", title: "Test Help", desc: "Targeted strategies and practice for top scores", color: "#C9973A" },
   { icon: "🎸", title: "Music (Guitar)", desc: "Classical, acoustic & electric guitar", color: "#C05621" },
 ];
 
