@@ -2,28 +2,6 @@ import { useState, useEffect } from "react";
 import { COLORS } from "../constants";
 import { useInView } from "../hooks/useInView";
 
-const phases = [
-  {
-    num: "01",
-    title: "Research",
-    desc: "Deep-dive diagnostic of your transcript, activities, and ambitions. We map target schools and identify the white space where you can win.",
-  },
-  {
-    num: "02",
-    title: "Execution",
-    desc: "We build your 'spike' — the rare, specialized credential that makes admissions officers remember you. Projects, competitions, and achievements that actually move the needle.",
-  },
-  {
-    num: "03",
-    title: "Narrative",
-    desc: "Crafting a cohesive story across every touchpoint — essays, activities list, recommendations — that is authentic, powerful, and perfectly targeted.",
-  },
-  {
-    num: "04",
-    title: "Application",
-    desc: "Submission-ready review, deadline management, and real-time strategy as decisions roll in. We're with you from first draft to final deposit.",
-  },
-];
 
 const whyUs = [
   { icon: "🏛️", title: "Stanford-Founded", desc: "Built by students who got in and know exactly how the game is played." },
@@ -33,7 +11,6 @@ const whyUs = [
 
 export default function ConsultingPage({ onNavigate }) {
   const [visible, setVisible] = useState(false);
-  const [phasesRef, phasesInView] = useInView();
   const [whyRef, whyInView] = useInView();
 
   useEffect(() => { setTimeout(() => setVisible(true), 100); }, []);
@@ -117,58 +94,6 @@ export default function ConsultingPage({ onNavigate }) {
         >
           Book a Free Strategy Session
         </button>
-      </section>
-
-      {/* 4-Phase Strategy */}
-      <section ref={phasesRef} style={{ background: COLORS.navy, padding: "100px 5vw" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 13,
-            letterSpacing: "0.25em", color: COLORS.gold,
-            textTransform: "uppercase", textAlign: "center", marginBottom: 12,
-            opacity: phasesInView ? 1 : 0, transition: "opacity 0.7s",
-          }}>The Method</p>
-          <h2 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800,
-            color: COLORS.white, textAlign: "center",
-            letterSpacing: "-0.03em", marginBottom: 64,
-            opacity: phasesInView ? 1 : 0,
-            transform: phasesInView ? "none" : "translateY(20px)",
-            transition: "all 0.8s ease 0.1s",
-          }}>The 4-Phase Strategy</h2>
-
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-            gap: 24,
-          }}>
-            {phases.map((p, i) => (
-              <div key={p.num} style={{
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(201,151,58,0.15)",
-                borderRadius: 18, padding: "36px 28px",
-                opacity: phasesInView ? 1 : 0,
-                transform: phasesInView ? "none" : "translateY(30px)",
-                transition: `all 0.7s ease ${0.1 + i * 0.1}s`,
-              }}>
-                <div style={{
-                  fontFamily: "'Playfair Display', serif", fontSize: 48,
-                  fontWeight: 800, color: "rgba(201,151,58,0.2)",
-                  lineHeight: 1, marginBottom: 10,
-                }}>{p.num}</div>
-                <h3 style={{
-                  fontFamily: "'Playfair Display', serif", fontSize: 20,
-                  fontWeight: 700, color: COLORS.goldLight, marginBottom: 10,
-                }}>{p.title}</h3>
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif", fontSize: 14,
-                  color: "rgba(255,255,255,0.6)", lineHeight: 1.7,
-                }}>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Why Us */}

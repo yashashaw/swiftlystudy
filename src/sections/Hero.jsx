@@ -123,7 +123,7 @@ export default function Hero() {
           transition: "all 0.9s ease 0.7s",
         }}
       >
-        One-on-one tutoring with students from Stanford, Berkeley, NYU, & more. Real expertise. Real results.
+        One-on-one K-12 tutoring with students from Stanford, Berkeley, NYU, & more. Real expertise. Real results.
       </p>
 
       <div

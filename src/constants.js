@@ -13,12 +13,6 @@ export const universities = ["Stanford University", "NYU", "UCLA", "UC Berkeley"
 
 export const services = [
   {
-    icon: "📝",
-    title: "SAT Prep",
-    desc: "Targeted strategies and practice for top scores",
-    color: "#C9973A",
-  },
-  {
     icon: "∫",
     title: "Mathematics",
     desc: "From algebra to multivariable calculus",
@@ -28,7 +22,7 @@ export const services = [
     icon: "⚛️",
     title: "Physics & Sciences",
     desc: "Biology, Chemistry, Physics & more",
-    color: "#2D6A4F",
+    color: "#6B46C1",
   },
   {
     icon: "</>",
@@ -37,10 +31,16 @@ export const services = [
     color: "#1A56DB",
   },
   {
-    icon: "🎓",
-    title: "College Consulting",
-    desc: "Essays, applications & strategy",
-    color: "#6B46C1",
+    icon: "📝",
+    title: "SAT/AP Prep",
+    desc: "Targeted strategies and practice for top scores",
+    color: "#C9973A",
+  },
+  {
+    icon: "📚 ",
+    title: "English",
+    desc: "Essays, grammar, and reading",
+    color: "#2cd15d",
   },
   {
     icon: "🎸",
