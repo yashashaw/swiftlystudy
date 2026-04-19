@@ -104,7 +104,7 @@ export default function ConsultingPage({ onNavigate }) {
           onMouseOver={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(201,151,58,0.55)"; }}
           onMouseOut={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 24px rgba(201,151,58,0.4)"; }}
         >
-          Book a Free Strategy Session
+          Book a FREE Strategy Session
         </button>
       </section>
 
