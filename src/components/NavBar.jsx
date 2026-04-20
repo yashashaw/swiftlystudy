@@ -6,7 +6,7 @@ import GradCap from "./GradCap";
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,8 +18,8 @@ export default function NavBar() {
   }, []);
 
   const navLinks = [
-    { label: "Home",       path: "/"           },
-    { label: "Tutoring",   path: "/tutoring"   },
+    { label: "Home", path: "/" },
+    { label: "Tutoring", path: "/tutoring" },
     { label: "Consulting", path: "/consulting" },
   ];
 
@@ -74,16 +74,23 @@ export default function NavBar() {
               {label}
             </button>
           ))}
-          
+
           {/* Squeeze Page CTA */}
           <button
-            onClick={() => go("/blueprint")}
+            onClick={() => go("/contact")} // Changed from /blueprint
             style={{
               background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
-              color: COLORS.navy, padding: "9px 22px", borderRadius: 6,
-              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 13,
-              border: "none", cursor: "pointer", letterSpacing: "0.04em",
-              boxShadow: "0 2px 12px rgba(201,151,58,0.35)", whiteSpace: "nowrap",
+              color: COLORS.navy,
+              padding: "9px 22px",
+              borderRadius: 6,
+              fontFamily: "'DM Sans', sans-serif",
+              fontWeight: 700,
+              fontSize: 13,
+              border: "none",
+              cursor: "pointer",
+              letterSpacing: "0.04em",
+              boxShadow: "0 2px 12px rgba(201,151,58,0.35)",
+              whiteSpace: "nowrap",
             }}
           >
             Book a Session
@@ -104,8 +111,8 @@ export default function NavBar() {
               width: 24, height: 2, background: COLORS.white, borderRadius: 2,
               opacity: menuOpen && i === 1 ? 0 : 1, transition: "all 0.3s",
               transform: menuOpen ? (
-                i === 0 ? "rotate(45deg) translate(5px, 5px)" : 
-                i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "none"
+                i === 0 ? "rotate(45deg) translate(5px, 5px)" :
+                  i === 2 ? "rotate(-45deg) translate(5px, -5px)" : "none"
               ) : "none"
             }} />
           ))}
@@ -122,7 +129,7 @@ export default function NavBar() {
         }}>
           {navLinks.map(({ label, path }) => (
             <button key={path} onClick={() => go(path)} style={{
-              color: location.pathname === path ? COLORS.goldLight : "rgba(255,255,255,0.85)", 
+              color: location.pathname === path ? COLORS.goldLight : "rgba(255,255,255,0.85)",
               background: "none", border: "none",
               cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 16,
               fontWeight: 500, textAlign: "left", padding: 0,

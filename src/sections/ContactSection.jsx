@@ -10,14 +10,15 @@ const CONTACT_INFO = [
 
 export default function ContactSection() {
   const [ref, inView] = useInView();
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  // 1. Added 'phone' to the initial state
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page refresh
-    if (!form.name || !form.email) {
-      alert("Please fill in your name and email.");
+    e.preventDefault(); 
+    if (!form.name || !form.email || !form.phone) {
+      alert("Please fill in your name, email, and phone number.");
       return;
     }
 
@@ -30,6 +31,7 @@ export default function ContactSection() {
       {
         from_name: form.name,
         from_email: form.email,
+        from_number: form.phone, // 2. Fixed the payload mapping here
         subject: form.subject || "General Inquiry",
         message: form.message,
       },
@@ -147,6 +149,8 @@ export default function ContactSection() {
             opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(20px)",
             transition: "all 0.9s ease 0.4s",
           }}>
+            
+            {/* Name and Email Row */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
               <div>
                 <label style={labelStyle}>Name</label>
@@ -171,19 +175,34 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div style={{ marginBottom: 16 }}>
-              <label style={labelStyle}>Subject</label>
-              <select
-                value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                style={{ ...inputStyle, color: form.subject ? COLORS.navy : "rgba(0,0,0,0.4)" }}
-              >
-                <option value="">Select a service...</option>
-                {services.map((s) => (
-                  <option key={s.title} value={s.title}>{s.title}</option>
-                ))}
-                <option value="Other">Other</option>
-              </select>
+            {/* Phone and Subject Row */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+              {/* 3. Added Phone Input here */}
+              <div>
+                <label style={labelStyle}>Phone</label>
+                <input
+                  required
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  placeholder="(123) 456-7890"
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Subject</label>
+                <select
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  style={{ ...inputStyle, color: form.subject ? COLORS.navy : "rgba(0,0,0,0.4)" }}
+                >
+                  <option value="">Select a service...</option>
+                  {services.map((s) => (
+                    <option key={s.title} value={s.title}>{s.title}</option>
+                  ))}
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
 
             <div style={{ marginBottom: 28 }}>
