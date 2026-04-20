@@ -152,7 +152,7 @@ export default function DeliveryPage() {
         </p>
 
         <a
-          href="https://calendly.com"
+          href="https://calendly.com/yashaw-stanford/30min"
           target="_blank"
           rel="noopener noreferrer"
           style={{
