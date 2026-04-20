@@ -1,19 +1,23 @@
+import { useNavigate } from "react-router-dom"; // 1. Import the hook
 import { COLORS } from "../constants";
 import GradCap from "../components/GradCap";
 
-export default function DeliveryPage({ onNavigate }) {
+// 2. Remove onNavigate from props
+export default function DeliveryPage() {
+  const navigate = useNavigate(); // 3. Initialize navigation
+
   return (
     <div style={{ background: COLORS.navy, minHeight: "100vh", paddingBottom: 1 }}>
 
       {/* Header */}
       <div style={{
         background: `linear-gradient(160deg, ${COLORS.navy} 0%, #0a152d 100%)`, 
-        padding: "64px 5vw 140px", // Extended bottom padding for the overlap effect
+        padding: "64px 5vw 140px", 
         textAlign: "center",
       }}>
-        {/* Clickable Logo */}
+        {/* 4. Update the onClick handler */}
         <div 
-          onClick={() => onNavigate('home')}
+          onClick={() => navigate("/")}
           style={{ 
             display: "flex", 
             alignItems: "center", 
@@ -58,10 +62,10 @@ export default function DeliveryPage({ onNavigate }) {
         </p>
       </div>
 
-      {/* Essay body - Styled as an exclusive document card */}
+      {/* Essay body */}
       <div style={{ 
         maxWidth: 760, 
-        margin: "-80px auto 80px", // Negative margin pulls it up over the dark header
+        margin: "-80px auto 80px", 
         background: "#FFFFFF", 
         padding: "72px 8%", 
         borderRadius: 16,
@@ -177,7 +181,7 @@ export default function DeliveryPage({ onNavigate }) {
   );
 }
 
-// Sub-components formatted for premium editorial feel
+// Sub-components
 function P({ children }) {
   return (
     <p style={{

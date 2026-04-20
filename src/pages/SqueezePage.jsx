@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 1. Import the hook
 import emailjs from '@emailjs/browser';
 import { COLORS } from "../constants";
 import GradCap from "../components/GradCap";
 
-export default function SqueezePage({ onNavigate }) {
+// 2. Remove onNavigate from props
+export default function SqueezePage() {
+  const navigate = useNavigate(); // 3. Initialize the navigate function
+  
   const [form, setForm] = useState({ 
     studentName: "", 
     studentEmail: "", 
@@ -21,7 +25,6 @@ export default function SqueezePage({ onNavigate }) {
   const validate = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // Basic phone validation: allows numbers, spaces, dashes, parentheses, optional + at start. Length 7-15
     const phoneRegex = /^\+?[\d\s\-()]{7,15}$/;
 
     if (!form.studentName.trim()) newErrors.studentName = "Required";
@@ -43,9 +46,8 @@ export default function SqueezePage({ onNavigate }) {
       setIsSubmitting(true);
       
       try {
-        // REPLACE THESE WITH YOUR ACTUAL EMAILJS IDs
         const serviceID = "service_il9rxyt"; 
-        const templateID = "template_8sols1d"; // This should be the ID of your Lead Notification Template
+        const templateID = "template_8sols1d"; 
         const publicKey = "PnzMFbM-C8zNFzFce";
 
         const templateParams = {
@@ -98,11 +100,11 @@ export default function SqueezePage({ onNavigate }) {
       background: `linear-gradient(160deg, ${COLORS.navy} 0%, #0F2044 55%, #1A0A28 100%)`,
       display: "flex", flexDirection: "column",
       alignItems: "center", justifyContent: "center",
-      padding: "80px 5vw", // Increased padding to allow for scrolling
+      padding: "80px 5vw",
     }}>
-      {/* Clickable Mini logo */}
+      {/* 4. Use navigate("/") instead of onNavigate('home') */}
       <div 
-        onClick={() => onNavigate('home')}
+        onClick={() => navigate("/")}
         style={{ 
           display: "flex", 
           alignItems: "center", 
@@ -122,7 +124,6 @@ export default function SqueezePage({ onNavigate }) {
       </div>
 
       <div style={{ maxWidth: 600, width: "100%" }}>
-        {/* Badge */}
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <span style={{
             background: "rgba(201,151,58,0.15)", color: COLORS.goldLight,
@@ -150,7 +151,6 @@ export default function SqueezePage({ onNavigate }) {
           Enter your info below to read the Stanford-approved essay on why the "well-rounded" student is dead — and what top schools are actually looking for.
         </p>
 
-        {/* Form Container OR Success Message */}
         {isSuccess ? (
           <div style={{
             background: "rgba(201,151,58,0.1)", padding: "48px 32px",
@@ -166,7 +166,6 @@ export default function SqueezePage({ onNavigate }) {
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "rgba(255,255,255,0.03)", padding: "32px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.05)" }}>
             
-            {/* Student Info Grid */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 16 }}>
               <div>
                 <label style={labelStyle}>Student Name</label>
