@@ -8,7 +8,7 @@ export default function PricingSection() {
         {
             id: "online",
             title: "Premium Online",
-            price: "50",
+            price: "60",
             description: "Face-to-face virtual sessions with our elite network of tutors, from the comfort of your home.",
             features: [
                 "Unrestricted access to top-university tutors",
@@ -20,7 +20,7 @@ export default function PricingSection() {
         {
             id: "in-person",
             title: "In-Person Excellence",
-            price: "70",
+            price: "80",
             description: "Traditional, hands-on learning brought directly to a local library, coffee shop, or your home.",
             features: [
                 "Zero screen fatigue",
@@ -31,6 +31,13 @@ export default function PricingSection() {
             buttonText: "Check Local Availability",
         },
     ];
+
+    const scrollToContact = () => {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <section
@@ -106,9 +113,9 @@ export default function PricingSection() {
                                 </div>
                             )}
 
-                            {/* Added functional anchor link to scroll to the Contact Section */}
+                            {/* Updated onClick handler */}
                             <button
-                                onClick={() => go("/blueprint")}
+                                onClick={scrollToContact}
                                 style={{
                                     marginTop: plan.locations ? 0 : "auto",
                                     background: `linear-gradient(135deg, ${COLORS.gold}, ${COLORS.goldLight})`,
