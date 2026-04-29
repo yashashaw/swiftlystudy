@@ -8,7 +8,6 @@ export default function PricingSection() {
         {
             id: "online",
             title: "Premium Online",
-            price: "60",
             description: "Face-to-face virtual sessions with our elite network of tutors, from the comfort of your home.",
             features: [
                 "Unrestricted access to top-university tutors",
@@ -20,7 +19,6 @@ export default function PricingSection() {
         {
             id: "in-person",
             title: "In-Person Excellence",
-            price: "80",
             description: "Traditional, hands-on learning brought directly to a local library, coffee shop, or your home.",
             features: [
                 "Zero screen fatigue",
@@ -76,15 +74,9 @@ export default function PricingSection() {
                             opacity: inView ? 1 : 0, transform: inView ? "none" : "translateY(30px)",
                             transition: `all 0.7s ease ${0.1 + i * 0.1}s`,
                         }}>
-                            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 700, color: COLORS.navy, marginBottom: 16 }}>
+                            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 700, color: COLORS.navy, marginBottom: 24 }}>
                                 {plan.title}
                             </h3>
-
-                            <div style={{ marginBottom: 24, display: "flex", alignItems: "baseline", gap: 4 }}>
-                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 24, color: COLORS.gold, fontWeight: 700 }}>$</span>
-                                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 56, color: COLORS.gold, fontWeight: 800, lineHeight: 1 }}>{plan.price}</span>
-                                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: COLORS.slate }}>/ hour</span>
-                            </div>
 
                             <p style={{
                                 fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: COLORS.slate,
@@ -113,7 +105,6 @@ export default function PricingSection() {
                                 </div>
                             )}
 
-                            {/* Updated onClick handler */}
                             <button
                                 onClick={scrollToContact}
                                 style={{
