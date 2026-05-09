@@ -9,7 +9,7 @@ export const COLORS = {
   lightSlate: "#EDF2F7",
 };
 
-export const universities = ["Stanford University", "NYU", "UCLA", "UC Berkeley", "USC", "UCSD"];
+export const universities = ["Stanford University", "Princeton", "UCLA", "UC Berkeley", "USC", "UCSD"];
 
 export const services = [
   { icon: "∫", title: "Mathematics", desc: "From algebra to multivariable calculus", color: "#8C1515" },
@@ -30,7 +30,6 @@ export const reviews = [
 export const tutors = [
   { name: "Yasha S.", school: "Stanford", subjects: ["Math", "College Consulting", "Physics", "Guitar", "Programming / CS"], photo: "/yasha.jpg", gpa: "4.1" },
   { name: "Yanai H.", school: "Berkeley", subjects: ["Math", "College Consulting", "Physics", "Guitar", "Programming / CS"], photo: "/yanai.jpg", gpa: "4.1" },
-  { name: "Helio H.", school: "NYU", subjects: ["SAT Prep", "Chemistry", "Math", "Physics"], photo: "/helio.png", gpa: "4.0" },
   { name: "Jacob G.", school: "UCLA", subjects: ["Biology", "Math", "Chemistry", "SAT Prep"], photo: "/jacob.png", gpa: "4.0" },
   { name: "Jack T.", school: "UCSD", subjects: ["Math", "College Consulting", "Physics", "Guitar", "Programming / CS"], photo: "/jack.png", gpa: "4.1" },
 ];

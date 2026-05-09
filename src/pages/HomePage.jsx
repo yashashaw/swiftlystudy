@@ -95,7 +95,7 @@ export default function HomePage() {
             badgeColor={COLORS.gold}
             badgeBg="rgba(201,151,58,0.15)"
             title="I need academic help for my child."
-            desc="One-on-one sessions with top students from Stanford, Berkeley, NYU & more. Real expertise for every subject."
+            desc="One-on-one sessions with top students from Stanford, Princeton, Berkeley & more. Real expertise for every subject."
             btnLabel="Explore Tutoring →"
             onClick={() => go("/tutoring")}
           />

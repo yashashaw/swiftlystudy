@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom"; // Added for routing
 const logos = [
   "/Berkeley.png",
   "/Stanford.png",
-  "/NYU.png",
+  "/Princeton.png",
   "/USC.png",
   "/UCLA.png",
   "/UCSD.png",
@@ -125,7 +125,7 @@ export default function Hero() {
           transition: "all 0.9s ease 0.7s",
         }}
       >
-        One-on-one K-12 tutoring with students from Stanford, Berkeley, NYU, & more. Real expertise. Real results.
+        One-on-one K-12 tutoring with students from Stanford, Princeton, Berkeley, & more. Real expertise. Real results.
       </p>
 
       <div
@@ -211,7 +211,7 @@ export default function Hero() {
                 height: 120,
                 width: "auto",
                 opacity: 1,
-                filter: "brightness(2) saturate(0.3)", 
+                filter: "brightness(1.5) saturate(0.7)", 
               }}
             />
           ))}
