@@ -1,21 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // 1. Import the hook
+import { useNavigate } from "react-router-dom";
 import emailjs from '@emailjs/browser';
 import { COLORS } from "../constants";
 import GradCap from "../components/GradCap";
 
-// 2. Remove onNavigate from props
 export default function SqueezePage() {
-  const navigate = useNavigate(); // 3. Initialize the navigate function
+  const navigate = useNavigate();
   
   const [form, setForm] = useState({ 
-    studentName: "", 
-    studentEmail: "", 
-    studentPhone: "",
     parentName: "",
     parentEmail: "",
     parentPhone: "",
-    heardAbout: ""
   });
   
   const [errors, setErrors] = useState({});
@@ -27,15 +22,9 @@ export default function SqueezePage() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\+?[\d\s\-()]{7,15}$/;
 
-    if (!form.studentName.trim()) newErrors.studentName = "Required";
-    if (!form.studentEmail || !emailRegex.test(form.studentEmail)) newErrors.studentEmail = "Valid email required";
-    if (!form.studentPhone || !phoneRegex.test(form.studentPhone)) newErrors.studentPhone = "Valid phone required";
-
     if (!form.parentName.trim()) newErrors.parentName = "Required";
     if (!form.parentEmail || !emailRegex.test(form.parentEmail)) newErrors.parentEmail = "Valid email required";
     if (!form.parentPhone || !phoneRegex.test(form.parentPhone)) newErrors.parentPhone = "Valid phone required";
-
-    if (!form.heardAbout) newErrors.heardAbout = "Required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -51,13 +40,9 @@ export default function SqueezePage() {
         const publicKey = "PnzMFbM-C8zNFzFce";
 
         const templateParams = {
-          studentName: form.studentName,
-          studentEmail: form.studentEmail,
-          studentPhone: form.studentPhone,
           parentName: form.parentName,
           parentEmail: form.parentEmail,
           parentPhone: form.parentPhone,
-          heardAbout: form.heardAbout,
         };
 
         await emailjs.send(serviceID, templateID, templateParams, publicKey);
@@ -102,7 +87,6 @@ export default function SqueezePage() {
       alignItems: "center", justifyContent: "center",
       padding: "80px 5vw",
     }}>
-      {/* 4. Use navigate("/") instead of onNavigate('home') */}
       <div 
         onClick={() => navigate("/")}
         style={{ 
@@ -123,7 +107,7 @@ export default function SqueezePage() {
         }}>Swiftly Consulting</span>
       </div>
 
-      <div style={{ maxWidth: 600, width: "100%" }}>
+      <div style={{ maxWidth: 520, width: "100%" }}>
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <span style={{
             background: "rgba(201,151,58,0.15)", color: COLORS.goldLight,
@@ -164,64 +148,50 @@ export default function SqueezePage() {
             </p>
           </div>
         ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 20, background: "rgba(255,255,255,0.03)", padding: "32px", borderRadius: 16, border: "1px solid rgba(255,255,255,0.05)" }}>
-            
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 16 }}>
-              <div>
-                <label style={labelStyle}>Student Name</label>
-                <input type="text" placeholder="e.g. Alex Johnson" value={form.studentName} onChange={e => setForm({ ...form, studentName: e.target.value })} style={inputStyle(errors.studentName)} onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} onBlur={e => e.target.style.borderColor = errors.studentName ? "#e53e3e" : "rgba(255,255,255,0.12)"} />
-                {errors.studentName && <span style={errorTextStyle}>{errors.studentName}</span>}
-              </div>
-              <div>
-                <label style={labelStyle}>Student Email</label>
-                <input type="email" placeholder="alex@email.com" value={form.studentEmail} onChange={e => setForm({ ...form, studentEmail: e.target.value })} style={inputStyle(errors.studentEmail)} onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} onBlur={e => e.target.style.borderColor = errors.studentEmail ? "#e53e3e" : "rgba(255,255,255,0.12)"} />
-                {errors.studentEmail && <span style={errorTextStyle}>{errors.studentEmail}</span>}
-              </div>
+          <div style={{
+            display: "flex", flexDirection: "column", gap: 20,
+            background: "rgba(255,255,255,0.03)", padding: "32px",
+            borderRadius: 16, border: "1px solid rgba(255,255,255,0.05)"
+          }}>
+
+            <div>
+              <label style={labelStyle}>Parent Name</label>
+              <input
+                type="text" placeholder="e.g. Sarah Johnson"
+                value={form.parentName}
+                onChange={e => setForm({ ...form, parentName: e.target.value })}
+                style={inputStyle(errors.parentName)}
+                onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"}
+                onBlur={e => e.target.style.borderColor = errors.parentName ? "#e53e3e" : "rgba(255,255,255,0.12)"}
+              />
+              {errors.parentName && <span style={errorTextStyle}>{errors.parentName}</span>}
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 16 }}>
-              <div>
-                <label style={labelStyle}>Student Phone</label>
-                <input type="tel" placeholder="(555) 000-0000" value={form.studentPhone} onChange={e => setForm({ ...form, studentPhone: e.target.value })} style={inputStyle(errors.studentPhone)} onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} onBlur={e => e.target.style.borderColor = errors.studentPhone ? "#e53e3e" : "rgba(255,255,255,0.12)"} />
-                {errors.studentPhone && <span style={errorTextStyle}>{errors.studentPhone}</span>}
-              </div>
-              <div>
-                <label style={labelStyle}>Parent Name</label>
-                <input type="text" placeholder="e.g. Sarah Johnson" value={form.parentName} onChange={e => setForm({ ...form, parentName: e.target.value })} style={inputStyle(errors.parentName)} onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} onBlur={e => e.target.style.borderColor = errors.parentName ? "#e53e3e" : "rgba(255,255,255,0.12)"} />
-                {errors.parentName && <span style={errorTextStyle}>{errors.parentName}</span>}
-              </div>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
               <div>
                 <label style={labelStyle}>Parent Email</label>
-                <input type="email" placeholder="sarah@email.com" value={form.parentEmail} onChange={e => setForm({ ...form, parentEmail: e.target.value })} style={inputStyle(errors.parentEmail)} onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} onBlur={e => e.target.style.borderColor = errors.parentEmail ? "#e53e3e" : "rgba(255,255,255,0.12)"} />
+                <input
+                  type="email" placeholder="sarah@email.com"
+                  value={form.parentEmail}
+                  onChange={e => setForm({ ...form, parentEmail: e.target.value })}
+                  style={inputStyle(errors.parentEmail)}
+                  onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"}
+                  onBlur={e => e.target.style.borderColor = errors.parentEmail ? "#e53e3e" : "rgba(255,255,255,0.12)"}
+                />
                 {errors.parentEmail && <span style={errorTextStyle}>{errors.parentEmail}</span>}
               </div>
               <div>
                 <label style={labelStyle}>Parent Phone</label>
-                <input type="tel" placeholder="(555) 000-0000" value={form.parentPhone} onChange={e => setForm({ ...form, parentPhone: e.target.value })} style={inputStyle(errors.parentPhone)} onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} onBlur={e => e.target.style.borderColor = errors.parentPhone ? "#e53e3e" : "rgba(255,255,255,0.12)"} />
+                <input
+                  type="tel" placeholder="(555) 000-0000"
+                  value={form.parentPhone}
+                  onChange={e => setForm({ ...form, parentPhone: e.target.value })}
+                  style={inputStyle(errors.parentPhone)}
+                  onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"}
+                  onBlur={e => e.target.style.borderColor = errors.parentPhone ? "#e53e3e" : "rgba(255,255,255,0.12)"}
+                />
                 {errors.parentPhone && <span style={errorTextStyle}>{errors.parentPhone}</span>}
               </div>
-            </div>
-
-            <div>
-              <label style={labelStyle}>How did you hear about us?</label>
-              <select 
-                value={form.heardAbout} 
-                onChange={e => setForm({ ...form, heardAbout: e.target.value })}
-                style={{ ...inputStyle(errors.heardAbout), appearance: "none" }}
-                onFocus={e => e.target.style.borderColor = "rgba(201,151,58,0.6)"} 
-                onBlur={e => e.target.style.borderColor = errors.heardAbout ? "#e53e3e" : "rgba(255,255,255,0.12)"}
-              >
-                <option value="" disabled style={{ color: "#000" }}>Select an option...</option>
-                <option value="TikTok" style={{ color: "#000" }}>TikTok</option>
-                <option value="Instagram" style={{ color: "#000" }}>Instagram</option>
-                <option value="Google Search" style={{ color: "#000" }}>Google Search</option>
-                <option value="Friend/Referral" style={{ color: "#000" }}>Friend / Referral</option>
-                <option value="Other" style={{ color: "#000" }}>Other</option>
-              </select>
-              {errors.heardAbout && <span style={errorTextStyle}>{errors.heardAbout}</span>}
             </div>
 
             <button

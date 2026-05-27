@@ -11,6 +11,7 @@ import TutoringPage from "./pages/TutoringPage";
 import ConsultingPage from "./pages/ConsultingPage";
 import SqueezePage from "./pages/SqueezePage";
 import DeliveryPage from "./pages/DeliveryPage";
+import WebinarPage from "./pages/WebinarPage";
 
 export default function App() {
   return (
@@ -24,12 +25,12 @@ export default function App() {
         {/* Clean Pages WITHOUT Navbar/Footer */}
         <Route path="/blueprint" element={<SqueezePage />} />
         <Route path="/delivery" element={<DeliveryPage />} />
+        <Route path="/webinar" element={<WebinarPage />} />
       </Routes>
     </Router>
   );
 }
 
-// Simple wrapper to keep Nav/Footer on main pages but hide them on Squeeze/Delivery
 function LayoutWithNav({ children }) {
   return (
     <>
